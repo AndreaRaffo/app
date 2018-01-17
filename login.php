@@ -5,11 +5,11 @@
     $username = $_POST["Username"];
     $password = $_POST["Password"];
     
-    $statement = mysqli_prepare($conn, "SELECT Name,Surname,Email,Password FROM Users WHERE Username = ?");
+    $statement = mysqli_prepare($conn, "SELECT Name,Surname,Balance,Email,Password FROM Users WHERE Username = ?");
     mysqli_stmt_bind_param($statement, "s", $username);
     mysqli_stmt_execute($statement);
     mysqli_stmt_store_result($statement);
-    mysqli_stmt_bind_result($statement, $myName,$mySurname,$myEmail,$myPassword);
+    mysqli_stmt_bind_result($statement, $myName,$mySurname,$myBalance,$myEmail,$myPassword);
     
     $response = array();
     $response["success"] = false;  
@@ -20,6 +20,7 @@
 	    	$response["username"] = $username;
 			$response["name"] = $myName;
 			$response["surname"] = $mySurname;
+			$response["balance"] = $myBalance;
 			$response["email"] = $myEmail;
 			
         }

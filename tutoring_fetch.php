@@ -16,7 +16,10 @@
 	$x=0;
     
     while($row = mysqli_fetch_assoc($result)){
-        $response[$x]["date"] = $row["Date"];
+		
+		$myDateTime = DateTime::createFromFormat('Y-m-d', $row["Date"]);
+		$newDateString = $myDateTime->format('d-m-Y');
+        $response[$x]["date"] = $newDateString;
 		$response[$x]["subject"] = $row["Subject"];
 		$response[$x]["username"] = $row["Username"];
 		$response[$x]["max"] = $row["Max"];

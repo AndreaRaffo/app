@@ -19,7 +19,6 @@
 		$response[$x]["path"] = $row["Path"];
 		$response[$x]["name"] = $row["Name"];
 		
-
         $x++;
     }
 		
